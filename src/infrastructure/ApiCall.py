@@ -50,7 +50,7 @@ class ApiCall:
     def __get_sign(self, timestamp, path):
         text = timestamp + 'GET' + path
         return hmac.new(bytes(self.api_secret.encode('ascii')), bytes(text.encode('ascii')), hashlib.sha256).hexdigest()
-    
+
     def __get_post_sign(self, timestamp, path, payload):
         text = timestamp + 'POST' + path + payload
         return hmac.new(bytes(self.api_secret.encode('ascii')), bytes(text.encode('ascii')), hashlib.sha256).hexdigest()
