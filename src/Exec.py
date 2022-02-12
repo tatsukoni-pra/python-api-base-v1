@@ -5,13 +5,18 @@ Execute File
 """
 
 import infrastructure.ApiCall as ApiCall
+import infrastructure.RealtimeApiCall as RealtimeApiCall
 
 api_key = 'YOUR API KEY'
 api_secret = 'YOUR API SECRET KEY'
 api_endpoint = 'ACCESS ENDPOINT'
 
+realtime_api_endpoint = 'Web Socket Endpoint'
+realtime_api_channel = 'Channel Name'
+
 if __name__ == '__main__':
-    api = ApiCall.ApiCall(api_key, api_secret, api_endpoint)
+    # API Usage
+    # api = ApiCall.ApiCall(api_key, api_secret, api_endpoint)
 
     # public GET Usage
     # path = '/v/public'
@@ -32,3 +37,7 @@ if __name__ == '__main__':
     # }
     # res = api.post_private(path, params)
     # print(res)
+
+    # RealTime API Usage
+    realtimeApi = RealtimeApiCall.RealtimeApiCall(url=realtime_api_endpoint, channel=realtime_api_channel)
+    realtimeApi.run()
