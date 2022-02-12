@@ -1,4 +1,5 @@
 #!/bin/bash -v
 
-# exec setup
+# start proccess
 echo `python --version`
+python src/Exec.py
