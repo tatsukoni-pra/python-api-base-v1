@@ -8,6 +8,10 @@ import json
 import websocket
 from logging import getLogger,INFO,StreamHandler
 logger = getLogger(__name__)
+handler = StreamHandler()
+handler.setLevel(INFO)
+logger.setLevel(INFO)
+logger.addHandler(handler)
 
 class RealtimeApiCall:
 
@@ -23,7 +27,6 @@ class RealtimeApiCall:
             on_error=self.on_error,
             on_close=self.on_close
         )
-        websocket.enableTrace(True)
 
     def run(self):
         #ws has loop. To break this press ctrl + c to occur Keyboard Interruption Exception.
