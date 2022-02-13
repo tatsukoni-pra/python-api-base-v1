@@ -6,6 +6,7 @@ Execute File
 
 import os
 from dotenv import load_dotenv
+import time
 import infrastructure.ApiCall as ApiCall
 import infrastructure.RealtimeApiCall as RealtimeApiCall
 
@@ -22,7 +23,16 @@ if __name__ == '__main__':
     runtimeContext = RuntimeContext()
 
     # API Usage
-    # api = ApiCall.ApiCall(api_key, api_secret, api_endpoint)
+    api = ApiCall.ApiCall(
+        api_key=runtimeContext.api_key,
+        api_secret=runtimeContext.api_secret,
+        api_endpoint=runtimeContext.api_endpoint
+    )
+    while True:
+        time.sleep(3)
+        path = '/v1/getmarkets'
+        res = api.get_public(path)
+        print(res)
 
     # public GET Usage
     # path = '/v/public'
@@ -45,8 +55,8 @@ if __name__ == '__main__':
     # print(res)
 
     # RealTime API Usage
-    realtimeApi = RealtimeApiCall.RealtimeApiCall(
-        url=runtimeContext.realtime_api_endpoint,
-        channel=runtimeContext.realtime_api_channel
-    )
-    realtimeApi.run()
+    # realtimeApi = RealtimeApiCall.RealtimeApiCall(
+    #     url=runtimeContext.realtime_api_endpoint,
+    #     channel=runtimeContext.realtime_api_channel
+    # )
+    # realtimeApi.run()
